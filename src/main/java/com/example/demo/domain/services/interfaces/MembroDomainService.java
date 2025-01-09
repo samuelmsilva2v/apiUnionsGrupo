@@ -12,7 +12,7 @@ public interface MembroDomainService {
 	
 	MembroResponseDto atualizarMembro(UUID id, MembroRequestDto request);
 	
-	MembroResponseDto excluirMembro(UUID id);
+	String excluirMembro(UUID id);
 	
 	MembroResponseDto consultarMembroPorId(UUID id);
 	
