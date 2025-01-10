@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -19,11 +20,22 @@ public class Membro {
 
 	@Id
 	private UUID idMembro;
+	
+	@Column(length = 150, nullable = false)
 	private String nome;
+	
+	@Column(length = 100, nullable = false)
 	private String email;
+	
+	@Column(length = 11, nullable = false)
 	private String telefone;
+	
+	@Column(length = 100, nullable = false)
 	private String empresa;
+	
 	private String curriculo;
+	
+	@Column(length = 100)
 	private String siteEmpresa;
 
 	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
