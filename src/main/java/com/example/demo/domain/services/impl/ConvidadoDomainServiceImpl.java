@@ -2,6 +2,7 @@ package com.example.demo.domain.services.impl;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,26 +43,44 @@ public class ConvidadoDomainServiceImpl implements ConvidadoDomainService {
 
 	@Override
 	public ConvidadoResponseDto alterarConvidado(UUID id, ConvidadoRequestDto request) {
-		// TODO Auto-generated method stub
-		return null;
+
+		var convidado = convidadoRepository.findById(id).get();
+
+		var membro = membroRepository.findById(request.getIdMembro()).get();
+
+		convidado.setNome(request.getNome());
+		convidado.setEmail(request.getEmail());
+		convidado.setTelefone(request.getTelefone());
+		convidado.setMembro(membro);
+
+		convidadoRepository.save(convidado);
+
+		return modelMapper.map(convidado, ConvidadoResponseDto.class);
 	}
 
 	@Override
 	public String excluirConvidado(UUID id) {
-		// TODO Auto-generated method stub
-		return null;
+
+		var convidado = convidadoRepository.findById(id).get();
+
+		convidadoRepository.delete(convidado);
+
+		return "Convidado removido com sucesso!";
 	}
 
 	@Override
 	public ConvidadoResponseDto consultarConvidadoPorId(UUID id) {
-		// TODO Auto-generated method stub
-		return null;
+
+		var convidado = convidadoRepository.findById(id).get();
+
+		return modelMapper.map(convidado, ConvidadoResponseDto.class);
 	}
 
 	@Override
 	public List<ConvidadoResponseDto> consultarConvidados() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return convidadoRepository.findAll().stream()
+				.map(convidado -> modelMapper.map(convidado, ConvidadoResponseDto.class)).collect(Collectors.toList());
 	}
 
 }
