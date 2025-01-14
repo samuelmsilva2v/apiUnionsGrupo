@@ -89,6 +89,7 @@ public class ReferenciaDomainServiceImpl implements ReferenciaDomainService {
 
 	@Override
 	public List<ReferenciaResponseDto> consultarReferencias() {
+		
 		return referenciaRepository.findAll().stream()
 				.map(referencia -> modelMapper.map(referencia, ReferenciaResponseDto.class)).collect(Collectors.toList());
 	}
