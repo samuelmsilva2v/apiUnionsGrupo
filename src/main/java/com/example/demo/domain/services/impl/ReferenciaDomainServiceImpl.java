@@ -33,7 +33,7 @@ public class ReferenciaDomainServiceImpl implements ReferenciaDomainService {
 
 		var avaliado = membroRepository.findById(request.getIdAvaliado()).get();
 
-		var referencia = modelMapper.map(request, Referencia.class);
+		var referencia = new Referencia();
 		referencia.setIdReferencia(UUID.randomUUID());
 		referencia.setObservacoes(request.getObservacoes());
 		referencia.setStatus(request.getStatus());

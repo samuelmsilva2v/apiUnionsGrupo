@@ -27,7 +27,7 @@ public class Membro {
 	@Column(length = 100, nullable = false)
 	private String email;
 	
-	@Column(length = 11, nullable = false)
+	@Column(nullable = false)
 	private String telefone;
 	
 	@Column(length = 100, nullable = false)

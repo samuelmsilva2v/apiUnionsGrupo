@@ -16,6 +16,6 @@ public class ReferenciaResponseDto {
 	private Status status;
 	private TipoReferencia tipoReferencia;
 	private Avaliacao avaliacao;
-	private UUID idAvaliador;
-	private UUID idAvaliado;
+	private MembroResponseDto avaliador;
+	private MembroResponseDto avaliado;
 }
