@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.domain.models.dtos.ReuniaoRequestDto;
 import com.example.demo.domain.models.dtos.ReuniaoResponseDto;
@@ -14,6 +15,7 @@ import com.example.demo.domain.services.interfaces.ReuniaoDomainService;
 import com.example.demo.infrastructure.repositories.MembroRepository;
 import com.example.demo.infrastructure.repositories.ReuniaoRepository;
 
+@Service
 public class ReuniaoDomainServiceImpl implements ReuniaoDomainService {
 
 	@Autowired
