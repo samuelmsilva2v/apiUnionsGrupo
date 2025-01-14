@@ -17,6 +17,8 @@ import com.example.demo.domain.models.dtos.MembroRequestDto;
 import com.example.demo.domain.models.dtos.MembroResponseDto;
 import com.example.demo.domain.services.interfaces.MembroDomainService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/membros")
 public class MembroController {
@@ -25,7 +27,7 @@ public class MembroController {
 	private MembroDomainService membroDomainService;
 	
 	@PostMapping
-	public MembroResponseDto insert(@RequestBody MembroRequestDto request) {
+	public MembroResponseDto insert(@Valid @RequestBody MembroRequestDto request) {
 		return membroDomainService.cadastrarMembro(request);
 	}
 
