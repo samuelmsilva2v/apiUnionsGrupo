@@ -1,6 +1,7 @@
 package com.example.demo.domain.models.dtos;
 
-import com.example.demo.domain.models.entities.Membro;
+import java.util.UUID;
+
 import com.example.demo.domain.models.enums.Avaliacao;
 import com.example.demo.domain.models.enums.Status;
 import com.example.demo.domain.models.enums.TipoReferencia;
@@ -15,6 +16,6 @@ public class ReferenciaRequestDto {
 	private Status status;
 	private TipoReferencia tipoReferencia;
 	private Avaliacao avaliacao;
-	private Membro avaliador;
-	private Membro avaliado;
+	private UUID idAvaliador;
+	private UUID idAvaliado;
 }
