@@ -30,18 +30,18 @@ public class ReferenciaController {
 	}
 	
 	@PutMapping("{id}")
-	public ReferenciaResponseDto update(@PathVariable UUID idReferencia, @RequestBody ReferenciaRequestDto request) {
-		return referenciaService.editarReferencia(idReferencia, request);
+	public ReferenciaResponseDto update(@PathVariable UUID id, @RequestBody ReferenciaRequestDto request) {
+		return referenciaService.editarReferencia(id, request);
 	}
 	
 	@DeleteMapping("{id}")
-	public String delete(@PathVariable UUID idReferencia) {
-		return referenciaService.excluirReferencia(idReferencia);
+	public String delete(@PathVariable UUID id) {
+		return referenciaService.excluirReferencia(id);
 	}
 	
 	@GetMapping("{id}")
-	public ReferenciaResponseDto getById(@PathVariable UUID idReferencia) {
-		return referenciaService.consultarReferenciaPorId(idReferencia);
+	public ReferenciaResponseDto getById(@PathVariable UUID id) {
+		return referenciaService.consultarReferenciaPorId(id);
 	}
 	
 	@GetMapping
