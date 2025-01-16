@@ -30,10 +30,20 @@ public class ConvidadoDomainServiceImpl implements ConvidadoDomainService {
 	@Override
 	public ConvidadoResponseDto cadastrarConvidado(ConvidadoRequestDto request) {
 
-		var membro = membroRepository.findById(request.getIdMembro()).get();
+		var membro = membroRepository.findById(request.getIdMembro()).orElseThrow(
+				() -> new IllegalArgumentException("Membro " + request.getIdMembro() + " não encontrado."));
+
+		if (convidadoRepository.existsByEmail(request.getEmail())) {
+			throw new IllegalArgumentException("Já existe um convidado cadastrado com o e-mail: " + request.getEmail());
+		}
+
+		if (convidadoRepository.existsByTelefone(request.getTelefone())) {
+			throw new IllegalArgumentException(
+					"Já existe um convidado cadastrado com o telefone: " + request.getTelefone());
+		}
 
 		var convidado = modelMapper.map(request, Convidado.class);
-		convidado.setIdConvidado(UUID.randomUUID());
+		convidado.setId(UUID.randomUUID());
 		convidado.setMembro(membro);
 
 		convidadoRepository.save(convidado);
@@ -44,10 +54,20 @@ public class ConvidadoDomainServiceImpl implements ConvidadoDomainService {
 	@Override
 	public ConvidadoResponseDto alterarConvidado(UUID id, ConvidadoRequestDto request) {
 
-		var convidado = convidadoRepository.findById(id).get();
+		var convidado = convidadoRepository.findById(id).orElseThrow(
+				() -> new IllegalArgumentException("Convidado " + request.getIdMembro() + " não encontrado."));
 
-		var membro = membroRepository.findById(request.getIdMembro()).get();
-
+		var membro = membroRepository.findById(request.getIdMembro()).orElseThrow(
+				() -> new IllegalArgumentException("Membro " + request.getIdMembro() + " não encontrado."));
+		
+		if (convidadoRepository.existsByEmailAndIdNot(request.getEmail(), id)) {
+	        throw new IllegalArgumentException("O e-mail " + request.getEmail() + " já está em uso por outro convidado.");
+	    }
+	    
+	    if (convidadoRepository.existsByTelefoneAndIdNot(request.getTelefone(), id)) {
+	        throw new IllegalArgumentException("O telefone " + request.getTelefone() + " já está em uso por outro convidado.");
+	    }
+	 
 		convidado.setNome(request.getNome());
 		convidado.setEmail(request.getEmail());
 		convidado.setTelefone(request.getTelefone());
@@ -61,7 +81,8 @@ public class ConvidadoDomainServiceImpl implements ConvidadoDomainService {
 	@Override
 	public String excluirConvidado(UUID id) {
 
-		var convidado = convidadoRepository.findById(id).get();
+		var convidado = convidadoRepository.findById(id).orElseThrow(
+				() -> new IllegalArgumentException("Convidado " + id + " não encontrado."));
 
 		convidadoRepository.delete(convidado);
 
@@ -71,14 +92,15 @@ public class ConvidadoDomainServiceImpl implements ConvidadoDomainService {
 	@Override
 	public ConvidadoResponseDto consultarConvidadoPorId(UUID id) {
 
-		var convidado = convidadoRepository.findById(id).get();
+		var convidado = convidadoRepository.findById(id).orElseThrow(
+				() -> new IllegalArgumentException("Convidado " + id + " não encontrado."));
 
 		return modelMapper.map(convidado, ConvidadoResponseDto.class);
 	}
 
 	@Override
 	public List<ConvidadoResponseDto> consultarConvidados() {
-		
+
 		return convidadoRepository.findAll().stream()
 				.map(convidado -> modelMapper.map(convidado, ConvidadoResponseDto.class)).collect(Collectors.toList());
 	}

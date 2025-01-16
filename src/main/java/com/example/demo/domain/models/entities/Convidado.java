@@ -16,11 +16,13 @@ import lombok.Data;
 public class Convidado {
 
 	@Id
-	private UUID idConvidado;
+	private UUID id;
 	@Column(length = 100)
 	private String nome;
+	
+	@Column(unique = true)
 	private String telefone;
-	@Column(length = 100)
+	@Column(length = 100, unique = true)
 	private String email;
 	@Column(length = 50)
 	private String especialidade;

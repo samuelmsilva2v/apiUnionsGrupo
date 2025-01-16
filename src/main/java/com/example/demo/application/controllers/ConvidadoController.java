@@ -17,6 +17,8 @@ import com.example.demo.domain.models.dtos.ConvidadoRequestDto;
 import com.example.demo.domain.models.dtos.ConvidadoResponseDto;
 import com.example.demo.domain.services.interfaces.ConvidadoDomainService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/convidados")
 public class ConvidadoController {
@@ -25,12 +27,12 @@ public class ConvidadoController {
 	private ConvidadoDomainService convidadoDomainService;
 	
 	@PostMapping
-	public ConvidadoResponseDto insert(@RequestBody ConvidadoRequestDto request) {
+	public ConvidadoResponseDto insert(@Valid @RequestBody ConvidadoRequestDto request) {
 		return convidadoDomainService.cadastrarConvidado(request);
 	}
 
 	@PutMapping("{id}")
-	public ConvidadoResponseDto update(@PathVariable UUID id, @RequestBody ConvidadoRequestDto request) {
+	public ConvidadoResponseDto update(@PathVariable UUID id, @Valid @RequestBody ConvidadoRequestDto request) {
 		return convidadoDomainService.alterarConvidado(id, request);
 	}
 

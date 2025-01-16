@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class ConvidadoResponseDto {
 
-	private UUID idConvidado;
+	private UUID id;
 	private String nome;
 	private String telefone;
 	private String email;
