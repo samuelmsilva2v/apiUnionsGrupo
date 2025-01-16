@@ -55,7 +55,7 @@ public class ConvidadoDomainServiceImpl implements ConvidadoDomainService {
 	public ConvidadoResponseDto alterarConvidado(UUID id, ConvidadoRequestDto request) {
 
 		var convidado = convidadoRepository.findById(id).orElseThrow(
-				() -> new IllegalArgumentException("Convidado " + request.getIdMembro() + " não encontrado."));
+				() -> new IllegalArgumentException("Convidado " + id + " não encontrado."));
 
 		var membro = membroRepository.findById(request.getIdMembro()).orElseThrow(
 				() -> new IllegalArgumentException("Membro " + request.getIdMembro() + " não encontrado."));

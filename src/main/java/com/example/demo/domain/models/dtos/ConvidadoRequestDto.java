@@ -25,6 +25,7 @@ public class ConvidadoRequestDto {
 	private String email;
 	
 	@NotBlank(message = "A especialidade/profissão do convidado é obrigatória.")
+	@Size(max = 50, message = "A especialidade/profissão deve ter no máximo 50 caracteres.")
 	private String especialidade;
 	
 	private UUID idMembro;
