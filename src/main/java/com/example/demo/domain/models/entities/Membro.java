@@ -19,7 +19,7 @@ import lombok.Data;
 public class Membro {
 
 	@Id
-	private UUID idMembro;
+	private UUID id;
 	
 	@Column(length = 150, nullable = false)
 	private String nome;

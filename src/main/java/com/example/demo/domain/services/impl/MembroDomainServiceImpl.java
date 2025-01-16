@@ -35,7 +35,7 @@ public class MembroDomainServiceImpl implements MembroDomainService {
 		List<Grupo> grupos = grupoRepository.findAllById(request.getGruposIds());
 		
 		var membro = modelMapper.map(request, Membro.class);
-		membro.setIdMembro(UUID.randomUUID());
+		membro.setId(UUID.randomUUID());
 		
 		membro.setGrupos(grupos);
 		

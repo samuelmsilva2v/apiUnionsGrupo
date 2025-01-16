@@ -35,7 +35,7 @@ public class ReuniaoDomainServiceImpl implements ReuniaoDomainService {
 		var convidado = membroRepository.findById(request.getIdConvidado()).get();
 
 		var reuniao = new Reuniao();
-		reuniao.setIdReuniao(UUID.randomUUID());
+		reuniao.setId(UUID.randomUUID());
 		reuniao.setDataEHora(request.getDataEHora());
 		reuniao.setLocal(request.getLocal());
 		reuniao.setMotivo(request.getMotivo());

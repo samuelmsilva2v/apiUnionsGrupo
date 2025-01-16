@@ -11,7 +11,7 @@ import lombok.Data;
 @Data	
 public class ReferenciaResponseDto {
 
-	private UUID idReferencia;
+	private UUID id;
 	private String observacoes;
 	private Status status;
 	private TipoReferencia tipoReferencia;

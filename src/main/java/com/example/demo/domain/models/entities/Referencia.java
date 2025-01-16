@@ -21,7 +21,7 @@ import lombok.Data;
 public class Referencia {
 
 	@Id
-	private UUID idReferencia;
+	private UUID id;
 	private String observacoes;
 	
 	@Enumerated(EnumType.STRING)

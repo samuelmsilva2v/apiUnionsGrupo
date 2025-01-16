@@ -27,7 +27,7 @@ public class GrupoDomainServiceImpl implements GrupoDomainService {
 	public GrupoResponseDto cadastrarGrupo(GrupoRequestDto request) {
 
 		var grupo = modelMapper.map(request, Grupo.class);
-		grupo.setIdGrupo(UUID.randomUUID());
+		grupo.setId(UUID.randomUUID());
 
 		grupoRepository.save(grupo);
 

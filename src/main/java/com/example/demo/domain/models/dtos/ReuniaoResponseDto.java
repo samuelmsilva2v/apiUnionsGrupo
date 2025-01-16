@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class ReuniaoResponseDto {
 
-	private UUID idReuniao;
+	private UUID id;
 	private Date dataEHora;
 	private String local;
 	private String motivo;

@@ -16,7 +16,7 @@ import lombok.Data;
 public class Grupo {
 
 	@Id
-	private UUID idGrupo;
+	private UUID id;
 	
 	@Column(length = 100, nullable = false)
 	private String nome;
