@@ -8,4 +8,7 @@ import com.example.demo.domain.models.entities.Grupo;
 
 public interface GrupoRepository extends JpaRepository<Grupo, UUID> {
 
+	boolean existsByNome(String nome);
+	
+	boolean existsByNomeAndIdNot(String nome, UUID id);
 }

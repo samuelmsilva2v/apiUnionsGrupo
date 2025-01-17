@@ -17,6 +17,8 @@ import com.example.demo.domain.models.dtos.GrupoRequestDto;
 import com.example.demo.domain.models.dtos.GrupoResponseDto;
 import com.example.demo.domain.services.interfaces.GrupoDomainService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/grupos")
 public class GrupoController {
@@ -25,12 +27,12 @@ public class GrupoController {
 	private GrupoDomainService grupoDomainService;
 
 	@PostMapping
-	public GrupoResponseDto insert(@RequestBody GrupoRequestDto request) {
+	public GrupoResponseDto insert(@Valid @RequestBody GrupoRequestDto request) {
 		return grupoDomainService.cadastrarGrupo(request);
 	}
 
 	@PutMapping("{id}")
-	public GrupoResponseDto update(@PathVariable UUID id, @RequestBody GrupoRequestDto request) {
+	public GrupoResponseDto update(@PathVariable UUID id,@Valid @RequestBody GrupoRequestDto request) {
 		return grupoDomainService.alterarGrupo(id, request);
 	}
 
