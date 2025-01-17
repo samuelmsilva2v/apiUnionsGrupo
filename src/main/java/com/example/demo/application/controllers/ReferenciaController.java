@@ -17,6 +17,8 @@ import com.example.demo.domain.models.dtos.ReferenciaRequestDto;
 import com.example.demo.domain.models.dtos.ReferenciaResponseDto;
 import com.example.demo.domain.services.interfaces.ReferenciaDomainService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/referencias")
 public class ReferenciaController {
@@ -25,12 +27,12 @@ public class ReferenciaController {
 	private ReferenciaDomainService referenciaService;
 	
 	@PostMapping
-	public ReferenciaResponseDto post(@RequestBody ReferenciaRequestDto request) {
+	public ReferenciaResponseDto post(@Valid @RequestBody ReferenciaRequestDto request) {
 		return referenciaService.publicarReferencia(request);
 	}
 	
 	@PutMapping("{id}")
-	public ReferenciaResponseDto update(@PathVariable UUID id, @RequestBody ReferenciaRequestDto request) {
+	public ReferenciaResponseDto update(@PathVariable UUID id, @Valid @RequestBody ReferenciaRequestDto request) {
 		return referenciaService.editarReferencia(id, request);
 	}
 	
