@@ -32,7 +32,7 @@ public class MembroController {
 	}
 
 	@PutMapping("{id}")
-	public MembroResponseDto update(@PathVariable UUID id, @RequestBody MembroRequestDto request) {
+	public MembroResponseDto update(@PathVariable UUID id, @Valid @RequestBody MembroRequestDto request) {
 		return membroDomainService.atualizarMembro(id, request);
 	}
 
