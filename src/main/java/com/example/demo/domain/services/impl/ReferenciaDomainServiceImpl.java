@@ -31,10 +31,10 @@ public class ReferenciaDomainServiceImpl implements ReferenciaDomainService {
 	public ReferenciaResponseDto publicarReferencia(ReferenciaRequestDto request) {
 
 		var avaliador = membroRepository.findById(request.getIdAvaliador()).orElseThrow(
-				() -> new IllegalArgumentException("Membro com a ID " + request.getIdAvaliador() + " não encontrado."));
+				() -> new IllegalArgumentException("Membro " + request.getIdAvaliador() + " não encontrado."));
 
 		var avaliado = membroRepository.findById(request.getIdAvaliado()).orElseThrow(
-				() -> new IllegalArgumentException("Membro com a ID " + request.getIdAvaliado() + " não encontrado."));
+				() -> new IllegalArgumentException("Membro " + request.getIdAvaliado() + " não encontrado."));
 
 		var referencia = new Referencia();
 		referencia.setId(UUID.randomUUID());
@@ -57,10 +57,10 @@ public class ReferenciaDomainServiceImpl implements ReferenciaDomainService {
 				.orElseThrow(() -> new IllegalArgumentException("A referência " + id + " não foi encontrada."));
 
 		var avaliador = membroRepository.findById(request.getIdAvaliador()).orElseThrow(
-				() -> new IllegalArgumentException("Membro com a ID " + request.getIdAvaliador() + "não encontrado."));
+				() -> new IllegalArgumentException("Membro " + request.getIdAvaliador() + "não encontrado."));
 
 		var avaliado = membroRepository.findById(request.getIdAvaliado()).orElseThrow(
-				() -> new IllegalArgumentException("Membro com a ID " + request.getIdAvaliado() + " não encontrado."));
+				() -> new IllegalArgumentException("Membro " + request.getIdAvaliado() + " não encontrado."));
 
 		referencia.setObservacoes(request.getObservacoes());
 		referencia.setStatus(request.getStatus());

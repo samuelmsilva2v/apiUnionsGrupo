@@ -30,9 +30,11 @@ public class ReuniaoDomainServiceImpl implements ReuniaoDomainService {
 	@Override
 	public ReuniaoResponseDto marcarReuniao(ReuniaoRequestDto request) {
 
-		var solicitante = membroRepository.findById(request.getIdSolicitante()).get();
+		var solicitante = membroRepository.findById(request.getIdSolicitante()).orElseThrow(
+				() -> new IllegalArgumentException("Membro " + request.getIdSolicitante() + " não encontrado."));
 
-		var convidado = membroRepository.findById(request.getIdConvidado()).get();
+		var convidado = membroRepository.findById(request.getIdConvidado()).orElseThrow(
+				() -> new IllegalArgumentException("Membro " + request.getIdConvidado() + " não encontrado."));
 
 		var reuniao = new Reuniao();
 		reuniao.setId(UUID.randomUUID());
@@ -50,18 +52,21 @@ public class ReuniaoDomainServiceImpl implements ReuniaoDomainService {
 	@Override
 	public ReuniaoResponseDto alterarReuniao(UUID id, ReuniaoRequestDto request) {
 
-		var reuniao = reuniaoRepository.findById(id).get();
+		var reuniao = reuniaoRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("A reunião " + id + " não foi encontrada."));
 
-		var solicitante = membroRepository.findById(request.getIdSolicitante()).get();
+		var solicitante = membroRepository.findById(request.getIdSolicitante()).orElseThrow(
+				() -> new IllegalArgumentException("Membro " + request.getIdSolicitante() + " não encontrado."));
 
-		var convidado = membroRepository.findById(request.getIdConvidado()).get();
-		
+		var convidado = membroRepository.findById(request.getIdConvidado()).orElseThrow(
+				() -> new IllegalArgumentException("Membro " + request.getIdConvidado() + " não encontrado."));
+
 		reuniao.setDataEHora(request.getDataEHora());
 		reuniao.setLocal(request.getLocal());
 		reuniao.setMotivo(request.getMotivo());
 		reuniao.setSolicitante(solicitante);
 		reuniao.setConvidado(convidado);
-		
+
 		reuniaoRepository.save(reuniao);
 
 		return modelMapper.map(reuniao, ReuniaoResponseDto.class);
@@ -69,27 +74,29 @@ public class ReuniaoDomainServiceImpl implements ReuniaoDomainService {
 
 	@Override
 	public String desmarcarReuniao(UUID id) {
-		
-		var reuniao = reuniaoRepository.findById(id).get();
-		
+
+		var reuniao = reuniaoRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("A reunião " + id + " não foi encontrada."));
+
 		reuniaoRepository.delete(reuniao);
-		
+
 		return "A reunião foi desmarcada com sucesso!";
 	}
 
 	@Override
 	public ReuniaoResponseDto consultarReuniaoPorId(UUID id) {
-		
-		var reuniao = reuniaoRepository.findById(id).get();
-		
+
+		var reuniao = reuniaoRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("A reunião " + id + " não foi encontrada."));
+
 		return modelMapper.map(reuniao, ReuniaoResponseDto.class);
 	}
 
 	@Override
 	public List<ReuniaoResponseDto> consultarReunioes() {
-		
-		return reuniaoRepository.findAll().stream()
-				.map(reuniao -> modelMapper.map(reuniao, ReuniaoResponseDto.class)).collect(Collectors.toList());
+
+		return reuniaoRepository.findAll().stream().map(reuniao -> modelMapper.map(reuniao, ReuniaoResponseDto.class))
+				.collect(Collectors.toList());
 	}
 
 }

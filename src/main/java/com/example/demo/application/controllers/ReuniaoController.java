@@ -17,6 +17,8 @@ import com.example.demo.domain.models.dtos.ReuniaoRequestDto;
 import com.example.demo.domain.models.dtos.ReuniaoResponseDto;
 import com.example.demo.domain.services.interfaces.ReuniaoDomainService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/reunioes")
 public class ReuniaoController {
@@ -25,12 +27,12 @@ public class ReuniaoController {
 	private ReuniaoDomainService reuniaoDomainService;
 	
 	@PostMapping
-	public ReuniaoResponseDto post(@RequestBody ReuniaoRequestDto request) {
+	public ReuniaoResponseDto post(@Valid @RequestBody ReuniaoRequestDto request) {
 		return reuniaoDomainService.marcarReuniao(request);
 	}
 
 	@PutMapping("{id}")
-	public ReuniaoResponseDto update(@PathVariable UUID id, @RequestBody ReuniaoRequestDto request) {
+	public ReuniaoResponseDto update(@PathVariable UUID id, @Valid @RequestBody ReuniaoRequestDto request) {
 		return reuniaoDomainService.alterarReuniao(id, request);
 	}
 
