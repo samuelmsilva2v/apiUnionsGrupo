@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.domain.models.dtos.OPNFRequestDto;
 import com.example.demo.domain.models.dtos.OPNFResponseDto;
-import com.example.demo.domain.models.dtos.ReferenciaResponseDto;
 import com.example.demo.domain.models.entities.OPNF;
 import com.example.demo.domain.services.interfaces.OPNFDomainService;
 import com.example.demo.infrastructure.repositories.MembroRepository;
