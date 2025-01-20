@@ -5,8 +5,12 @@ import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.example.demo.domain.models.enums.StatusOPNF;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -26,6 +30,10 @@ public class OPNF {
 	@CreationTimestamp
 	@Column(updatable = false)
 	private Date dataCriacao;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
+	private StatusOPNF status;
 
 	@ManyToOne
 	@JoinColumn(name = "referencia_id", nullable = false)
