@@ -8,9 +8,9 @@ import com.example.demo.domain.models.dtos.OPNFResponseDto;
 
 public interface OPNFDomainService {
 
-	OPNFResponseDto criarOPNF(OPNFRequestDto response);
+	OPNFResponseDto criarOPNF(OPNFRequestDto request);
 	
-	OPNFResponseDto alterarOPNF(UUID id, OPNFRequestDto response);
+	OPNFResponseDto alterarOPNF(UUID id, OPNFRequestDto request);
 	
 	String excluirOPNF(UUID id);
 	
