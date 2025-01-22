@@ -82,3 +82,16 @@ O projeto tem como objetivo facilitar a conexão entre os associados, promovendo
 | GET    | `/api/opnf/{id}`   | Consulta uma OPNF através do ID |
 | PUT    | `/api/opnf/{id}`   | Altera uma OPNF                 |
 | DELETE | `/api/opnf/{id}`   | Exclui uma OPNF                 |
+
+## Protipação
+
+![](https://github.com/samuelmsilva2v/assets/blob/main/apiUnionsGrupo/Modelo_Unions_Page_2.png)
+![](https://github.com/samuelmsilva2v/assets/blob/main/apiUnionsGrupo/Modelo_Unions_Page_3.png)
+![](https://github.com/samuelmsilva2v/assets/blob/main/apiUnionsGrupo/Modelo_Unions_Page_4.png)
+![](https://github.com/samuelmsilva2v/assets/blob/main/apiUnionsGrupo/Modelo_Unions_Page_5.png)
+![](https://github.com/samuelmsilva2v/assets/blob/main/apiUnionsGrupo/Modelo_Unions_Page_6.png)
+![](https://github.com/samuelmsilva2v/assets/blob/main/apiUnionsGrupo/Modelo_Unions_Page_7.png)
+![](https://github.com/samuelmsilva2v/assets/blob/main/apiUnionsGrupo/Modelo_Unions_Page_8.png)
+![](https://github.com/samuelmsilva2v/assets/blob/main/apiUnionsGrupo/Modelo_Unions_Page_9.png)
+![](https://github.com/samuelmsilva2v/assets/blob/main/apiUnionsGrupo/Modelo_Unions_Page_10.png)
+![](https://github.com/samuelmsilva2v/assets/blob/main/apiUnionsGrupo/Modelo_Unions_Page_11.png)
