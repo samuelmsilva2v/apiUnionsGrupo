@@ -83,7 +83,7 @@ O projeto tem como objetivo facilitar a conexão entre os associados, promovendo
 | PUT    | `/api/opnf/{id}`   | Altera uma OPNF                 |
 | DELETE | `/api/opnf/{id}`   | Exclui uma OPNF                 |
 
-## Protipação
+## Prototipação
 
 ![](https://github.com/samuelmsilva2v/assets/blob/main/apiUnionsGrupo/Modelo_Unions_Page_2.png)
 ![](https://github.com/samuelmsilva2v/assets/blob/main/apiUnionsGrupo/Modelo_Unions_Page_3.png)
