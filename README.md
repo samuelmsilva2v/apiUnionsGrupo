@@ -83,6 +83,23 @@ O projeto tem como objetivo facilitar a conexão entre os associados, promovendo
 | PUT    | `/api/opnf/{id}`   | Altera uma OPNF                 |
 | DELETE | `/api/opnf/{id}`   | Exclui uma OPNF                 |
 
+## Instalação:
+
+### 1. Clone o repositório:
+```bash
+   git clone https://github.com/samuelmsilva2v/apiUnionsGrupo.git
+   cd apiUnionsGrupo
+```
+### 2. Instalando as dependências e compilando o projeto com Maven:
+```bash
+./mvnw clean install
+```
+### 3. Executando a aplicação:
+```bash
+./mvnw spring-boot:run
+```
+#### A aplicação vai rodar em http://localhost:8080/swagger-ui/index.html#
+
 ## Prototipação
 
 ![](https://github.com/samuelmsilva2v/assets/blob/main/apiUnionsGrupo/Modelo_Unions_Page_2.png)
